@@ -1,0 +1,14 @@
+Asymptotic Time comp -> Input이 커질때
+-> Average, Worst case
+
+Omega(Om)
+
+3n+2 > n, Om(n)
+
+
+Theta
+-> 3n+2를 n^2로 써도 되지만, 제한을 둬서 n으로 써야함
+
+
+Queue
+FIFO
