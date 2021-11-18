@@ -1,25 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX_QUEUE_SIZE 10
+#define MAX_QUEUE_SIZE 100
 #define INVALID_KEY -1
-//typedef struct{
-//	int key;
-//} element;
+typedef struct{
+	int key;
+} element;
 
-struct node{
-	int vertex;
-	struct node* link;
-};
 
 int queue[MAX_QUEUE_SIZE];
-int rear=-1;
-int front=-1;
+int rear=0;
+int front=0;
 
-void addq(int);
-int deleteq();
+//void addq(int);
+//element deleteq();
 //void queueFull();
-//int queueEmpty();
-
+//element queueEmpty();
+//
 //void main(){
 //	int i;
 //	element e;
@@ -58,25 +54,25 @@ int deleteq(){
 //	if(front==rear) return queueEmpty();
 	return queue[++front];
 }
-void queueFull(){
-	int i,offset;
-	if(front==-1){
-		fprintf(stderr, "no more space in the queue\n");
-    	exit(1);
-	}
-	offset=front+1;
-//	reorganaizing
-	for(i=front+1;i<MAX_QUEUE_SIZE;i++){
-		queue[i-offset]=queue[i];
-	}
-	
-	front=front-offset;
-	rear=rear-offset;
-	printf(" ==== queue reorganized. (front: %2d rear: %2d) ====\n", front, rear);
-}
-
-int queueEmpty(){
-	node e;
-	e.vertex=INVALID_KEY;
-	return e;
-}
+//void queueFull(){
+//	int i,offset;
+//	if(front==-1){
+//		fprintf(stderr, "no more space in the queue\n");
+//    	exit(1);
+//	}
+//	offset=front+1;
+////	reorganaizing
+//	for(i=front+1;i<MAX_QUEUE_SIZE;i++){
+//		queue[i-offset]=queue[i];
+//	}
+//	
+//	front=front-offset;
+//	rear=rear-offset;
+//	printf(" ==== queue reorganized. (front: %2d rear: %2d) ====\n", front, rear);
+//}
+//
+//element queueEmpty(){
+//	element e;
+//	e.key=INVALID_KEY;
+//	return e;
+//}
