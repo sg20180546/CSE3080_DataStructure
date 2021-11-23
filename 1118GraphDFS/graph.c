@@ -75,7 +75,6 @@ void dfs(int v){
 }
 void bfs(int v){
 	nodePointer w;
-//	front =rear=-1;
 	printf("%5d ",v);
 	visited[v]=TRUE;
 	addq(v);
@@ -83,7 +82,6 @@ void bfs(int v){
 	while(front!=rear){
 		v=deleteq();
 		for(w=graph[v];w;w=w->link){
-			
 			if(!visited[w->vertex]){
 				printf("%5d ",w->vertex);
 				addq(w->vertex);
