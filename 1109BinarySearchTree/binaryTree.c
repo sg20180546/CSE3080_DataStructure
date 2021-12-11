@@ -33,9 +33,27 @@ void inorder(treePointer root){
 	}
 }
 
+void preorder(treePointer root){
+	if(root){
+		printf("%d ",root->data.key);
+		preorder(root->left_child);
+		preorder(root->right_child);
+	}
+}
+
+void postorder(treePointer root){
+	if(root){
+		postorder(root->left_child);
+		postorder(root->right_child);
+		printf("%d ",root->data.key);
+	}
+}
+
 void insertNode(treePointer* node,int k){
 //	node
 	treePointer ptr,temp=modifiedSearch(*node,k);
+//	treePointer ptr,temp=search(*node,k);
+	
 	if(temp|| !(*node) ){
 		ptr=(treePointer)malloc(sizeof(*ptr));
 		ptr->data.key=k;
@@ -62,5 +80,10 @@ int main(void){
 	insertNode(&tree,20);
 	insertNode(&tree,50);
 	insertNode(&tree,10);
-	inorder(tree);printf("\n");
+//	inorder(tree);printf("\n");
+//	preorder(tree);printf("\n");
+	postorder(tree);printf("\n");
+//	element* e=search(tree,30);
+//	printf("%d ",e->key);
+	return 0;
 }

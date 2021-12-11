@@ -14,7 +14,7 @@ int visited[MAX_VERTEX];
 
 void dfs(int v);
 void bfs(int v);
-
+void connected();
 int main(){
 	nodePointer prev,np;
 	
@@ -62,6 +62,9 @@ int main(){
 	printf("\n");
 	for(i=0;i<8;i++) visited[i]=0;
 	bfs(0);
+	printf("\n");
+//	for(i=0;i<8;i++) visited[i]=0;
+	connected();
 	return 0;
 }
 
@@ -73,12 +76,20 @@ void dfs(int v){
 		if(!visited[w->vertex]) dfs(w->vertex);
 	}
 }
+
+void dfs(int v){
+	nodePointer w;
+	visited=1;
+	printf("%5d ",v);
+	for(w=graph[v];w;w=w->link){
+		if(!visited[w->vertex]) dfs(w->vertex);
+	}
+}
 void bfs(int v){
 	nodePointer w;
 	printf("%5d ",v);
 	visited[v]=TRUE;
 	addq(v);
-//	printf("front : %d, rear : %d \n ",front,rear);//
 	while(front!=rear){
 		v=deleteq();
 		for(w=graph[v];w;w=w->link){
@@ -87,6 +98,33 @@ void bfs(int v){
 				addq(w->vertex);
 				visited[w->vertex]=TRUE;
 			}
+		}
+	}
+}
+
+void bfs(int v){
+	nodePointer w;
+	printf("%5d ",v);
+	visited[v]=TRUE;
+	addq(v);
+	while(front!=rear){
+		v=deleteq();
+		for(w=graph[v];w;w->link){
+			if(!visited[w->vertex]){
+				printf("%d ",w->vertex);
+				addq(w->vertex);
+				visited[w->vertex]=TRUE;
+			}
+		}
+	}
+}
+
+void connected(){
+	int i;
+	for(i=0;i<8;i++){
+		if(!visited[i]){
+			dfs(i);
+			printf("\n");
 		}
 	}
 }

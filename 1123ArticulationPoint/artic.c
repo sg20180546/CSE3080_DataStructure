@@ -58,10 +58,17 @@ void dfnlow(int u, int v){
 	
 	for(ptr=graph[u];ptr;ptr=ptr->link){
 		w=ptr->vertex;
+//		w -> adjacent list(child or parent)
+//		v - > parent node
+
 		if(dfn[w]<0){
+//			if not visitied, do dfs
 			dfnlow(w,u);
 			low[u]=MIN2(low[u],low[w]);
 		}else if(w!=v){
+//			if(w==child)
+			printf("u(%d) w(%d),v(%d) : low[%d]=MIN2(low[%d](%d) ,dfn[%d](%d) )\n",u,w,v,u,u,low[u],w,dfn[w]);
+//			low[u] is  
 			low[u]=MIN2(low[u],dfn[w]);
 		}
 	}
@@ -83,9 +90,12 @@ int checkAp(int u){
 	else{
 		nodePointer ptr=graph[u];
 		while(ptr){
+//			child node일때 
 			if(dfn[ptr->vertex]>dfn[u]){
+//			child node의 low값이 current node의 방문순위보다 늦을때 
 				if(low[ptr->vertex] >= dfn[u]) return TRUE;
 			}
+			
 			ptr=ptr->link;
 			
 		}	
