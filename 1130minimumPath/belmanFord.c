@@ -22,7 +22,7 @@ void main(){
 	int i,j;
 	int path_curr,path_count;
 	
-	createGraph2();
+	createGraph();
 //	createGraph3();
 	for(i=0;i<numVertices;i++){
 		distance[i]=INF;
